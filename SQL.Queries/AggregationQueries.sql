@@ -3,9 +3,9 @@ SELECT
     P.ProductName, 
     SUM(S.UnitsSold) AS TotalUnitsSold
 FROM 
-    Products P
+    Sales S
 JOIN 
-    Sales S ON P.ProductID = S.ProductID
+    Products P ON S.ProductID = P.ProductID
 GROUP BY 
     P.ProductName;
 
@@ -14,9 +14,9 @@ SELECT
     SP.SupplierName, 
     COUNT(*) AS DelayedDeliveries
 FROM 
-    Suppliers SP
+    Deliveries D
 JOIN 
-    Deliveries D ON SP.SupplierID = D.SupplierID
+    Suppliers SP ON D.SupplierID = SP.SupplierID
 WHERE 
     D.DeliveryDate > D.ExpectedDeliveryDate
 GROUP BY 
@@ -31,8 +31,8 @@ SELECT
     MAX(P.StockLevel) AS MaxStockLevel, 
     SUM(S.UnitsSold) AS TotalUnitsSold
 FROM 
-    Products P
+    Sales S
 JOIN 
-    Sales S ON P.ProductID = S.ProductID
+    Products P ON S.ProductID = P.ProductID
 GROUP BY 
     S.StoreLocation;

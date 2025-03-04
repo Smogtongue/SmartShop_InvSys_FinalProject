@@ -5,8 +5,8 @@ SELECT
     S.StoreLocation, 
     S.UnitsSold
 FROM 
-    Products P
+    Sales S
 JOIN 
-    Sales S ON P.ProductID = S.ProductID
+    Products P ON S.ProductID = P.ProductID
 JOIN 
     Suppliers SP ON P.SupplierID = SP.SupplierID;
