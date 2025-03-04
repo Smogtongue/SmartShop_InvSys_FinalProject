@@ -1,0 +1,1 @@
+SELECT ProductName, Category, Price, StockLevel FROM Products;

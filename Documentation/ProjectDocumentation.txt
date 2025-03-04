@@ -1,0 +1,3 @@
+RetrieveProductDetails.sql: Retrieves product name, category, price, and stock level from the Products table.
+
+FilterProducts.sql: Contains queries to filter products by category and stock level, as well as sorting by price.
