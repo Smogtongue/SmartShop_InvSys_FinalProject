@@ -1,17 +1,17 @@
 /* Calculate total sales for each product */
 SELECT 
-    ProductName, 
-    SUM(UnitsSold) AS TotalUnitsSold
+    P.ProductName, 
+    SUM(S.UnitsSold) AS TotalUnitsSold
 FROM 
     Products P
 JOIN 
     Sales S ON P.ProductID = S.ProductID
 GROUP BY 
-    ProductName;
+    P.ProductName;
 
 /* Identify suppliers with the most delayed deliveries */
 SELECT 
-    SupplierName, 
+    SP.SupplierName, 
     COUNT(*) AS DelayedDeliveries
 FROM 
     Suppliers SP
@@ -20,19 +20,19 @@ JOIN
 WHERE 
     D.DeliveryDate > D.ExpectedDeliveryDate
 GROUP BY 
-    SupplierName
+    SP.SupplierName
 ORDER BY 
     DelayedDeliveries DESC;
 
 /* Use aggregate functions to analyze trends and summarize data */
 SELECT 
-    StoreLocation, 
-    AVG(Price) AS AveragePrice, 
-    MAX(StockLevel) AS MaxStockLevel, 
-    SUM(UnitsSold) AS TotalUnitsSold
+    S.StoreLocation, 
+    AVG(P.Price) AS AveragePrice, 
+    MAX(P.StockLevel) AS MaxStockLevel, 
+    SUM(S.UnitsSold) AS TotalUnitsSold
 FROM 
     Products P
 JOIN 
     Sales S ON P.ProductID = S.ProductID
 GROUP BY 
-    StoreLocation;
+    S.StoreLocation;
